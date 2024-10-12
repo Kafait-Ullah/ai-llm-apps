@@ -20,16 +20,20 @@ text: {text}
 prompt_template = ChatPromptTemplate.from_template(template)
 
 # Generate a list of languages and their codes using pycountry
-languages = {lang.name: lang.alpha_2 for lang in pycountry.languages if hasattr(lang, 'alpha_2')}
+languages = {
+    lang.name: lang.alpha_2 for lang in pycountry.languages if hasattr(lang, "alpha_2")
+}
 default_index = list(languages.keys()).index("English")
-selected_language_name = st.selectbox('Select a language:', list(languages.keys()), index=default_index)
+selected_language_name = st.selectbox(
+    "Select a language:", list(languages.keys()), index=default_index
+)
 selected_language_code = languages[selected_language_name]
 
 
-st.write(f'You selected: {selected_language_name} (Code: {selected_language_code})')
+st.write(f"You selected: {selected_language_name} (Code: {selected_language_code})")
 
 # Handle translation logic
-if st.button("Translate Text", type="primary" ):
+if st.button("Translate Text", type="primary"):
     if not api_key:
         st.error("Please enter your OpenAI API key.")
         st.stop()
@@ -41,7 +45,9 @@ if st.button("Translate Text", type="primary" ):
         llm = ChatOpenAI(temperature=0.0, model="gpt-4o-mini", openai_api_key=api_key)
 
         # Create prompt messages
-        messages = prompt_template.format_messages(text=review_text, language=selected_language_name)
+        messages = prompt_template.format_messages(
+            text=review_text, language=selected_language_name
+        )
 
         # Chain LLM and parser together
         chain = llm | parser
