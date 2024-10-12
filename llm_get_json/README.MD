@@ -35,6 +35,22 @@ This Streamlit app enables users to analyze customer reviews using the power of 
 - The app uses a language model (GPT-4o) to process the review and extract specific information such as whether the product was a gift, delivery time, and price-related sentences.
 - The app will display the structured output as JSON.
 
+## Sample Review and Output
+
+### Sample Input:
+```plaintext
+This leaf blower is pretty amazing. It has four settings: candle blower, gentle breeze, windy city, and tornado. It arrived in two days, just in time for my wife's anniversary present. I think my wife liked it so much she was speechless. So far I've been the only one using it, and I've been using it every other morning to clear the leaves on our lawn. It's slightly more expensive than the other leaf blowers out there, but I think it's worth it for the extra features.
+```
+
+### Output:
+```json
+{
+   "gift": true,
+   "delivery_days": 2,
+   "price_value": ["It's slightly more expensive than the other leaf blowers out there", "I think it's worth it for the extra features"]
+}
+```
+
 ## Output Format
 The extracted information is returned in the following structure:
 ```json
