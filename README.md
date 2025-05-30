@@ -92,4 +92,4 @@ Want to contribute? Submit a PR or open an issue with ideas, bugs, or enhancemen
 ## 📫 Contact
 
 * GitHub: [@Kafait-Ullah](https://github.com/Kafait-Ullah)
-* Email: (Add if you want)
+* Email: (kafaitbhatti.cs@gmail.com)
